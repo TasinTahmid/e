@@ -9,7 +9,7 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: my-secret-pw
     networks:
-      - express-app_express_sequelize
+      - express_sequelize
   api:
     build: 
       context: .
@@ -20,10 +20,16 @@ services:
       - 5000:5000
     volumes:
       - ./:/app
+      - /app/node_modules
     depends_on:
       - db
+    environment:
+      DATABASE_NAME: blog_server
+      SERVER_NAME: root
+      DB_PASSWORD: my-secret-pw
+      PORT: 5000
     networks:
-      - express-app_express_sequelize
+      - express_sequelize
 
 networks:
-  express-app_express_sequelize:
+  express_sequelize:
