@@ -9,7 +9,7 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: my-secret-pw
     networks:
-      - express_sequelize
+      - express-app_express_sequelize
   api:
     build: 
       context: .
@@ -23,7 +23,7 @@ services:
     depends_on:
       - db
     networks:
-      - express_sequelize
+      - express-app_express_sequelize
 
 networks:
-  express_sequelize:
+  express-app_express_sequelize:
