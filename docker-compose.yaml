@@ -1,0 +1,29 @@
+services:
+  db:
+    image: mysql
+    ports:
+      - "3307:3306" 
+    volumes:
+      - ./mysql-data:/var/lib/mysql
+    container_name: mysql_c
+    environment:
+      MYSQL_ROOT_PASSWORD: my-secret-pw
+    networks:
+      - express_sequelize
+  api:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    image: express-app:tasin
+    container_name: express_c
+    ports:
+      - 5000:5000
+    volumes:
+      - ./:/app
+    depends_on:
+      - db
+    networks:
+      - express_sequelize
+
+networks:
+  express_sequelize:
