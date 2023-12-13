@@ -1,6 +1,6 @@
 FROM node:16-alpine
 
-WORKDIR /user/app
+WORKDIR /app
 
 COPY package.json .
 RUN npm install
@@ -8,4 +8,4 @@ RUN npm install
 COPY . .
 EXPOSE 5000
 
-CMD [ "npm", "run", "dev" ]
+CMD [ "npm", "start"]

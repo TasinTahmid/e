@@ -6,7 +6,7 @@ const sequelize = new Sequelize(
     // process.env.DB_PASSWORD,
     "blog_server",
     "root",
-    "root",
+    "my-secret-pw",
     {
         host: "db",
         dialect: "mysql",
